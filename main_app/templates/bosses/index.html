@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Boss List</h1>
+
+{% for boss in bosses %}
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ boss.name }}</span>
+      <p>Game: {{ boss.game }}</p>
+      <p>Description: {{ boss.description }}</p>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}
