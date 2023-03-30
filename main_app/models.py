@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
@@ -42,6 +43,6 @@ class Boss(models.Model):
         Game,
         on_delete=models.CASCADE
     )
-    
+
     def __str__(self):
         return f"{self.name} : {self.game}"
