@@ -1,9 +1,12 @@
 from django.shortcuts import render
-from .models import Boss
+from .models import Game
 
-bosses = [
-    {'name': 'fume knight', 'game': 'Dark Souls 2', 'description': 'Powerful knight with dual swords'},
-    {'name': 'Elden Beast', 'game': 'Elden Ring', 'description': 'Outer god of the lands between'}
+games = [
+    {'title': 'Dark Souls', 'description': 'The first of the souls series', 'boss_number': 13},
+    {'title': 'Dark Souls II', 'description': 'The second installment of the souls series', 'boss_number': 32},
+    {'title': 'Dark Souls III', 'description': 'The final installment of the souls series', 'boss_number': 19},
+    {'title': 'Bloodborne', 'description': 'A twist on the formula to a more gritty, offensive game', 'boss_number': 17},
+    {'title': 'Sekiro', 'description': 'A complete 180 in fighting style and design, this game follows a shinobi in Japan', 'boss_number': 12},
 ]
 
 # Create your views here.
@@ -15,11 +18,11 @@ def lore(request):
 
 def bosses_index(request):
     return render(request, 'bosses/index.html', {
-        'bosses': bosses
+        'games': games
     })
 
 def bosses_show(request, boss_id):
-    boss = Boss.objects.get(id=boss_id)
-    return render(request, 'bosses/show.html', {
-        'boss' : boss
+    game = Game.objects.get(id=boss_id)
+    return render(request, 'games/show.html', {
+        'game' : game
     })

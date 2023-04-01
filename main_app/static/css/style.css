@@ -1,15 +1,24 @@
 body {
-    display: flex;
     min-height: 100vh;
-    background-color: red;
+    background-color: #403D39;
+    color: #FFFCF2;
 }
 
 footer {
     margin-top: auto;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+nav {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 70px;
+    justify-content: space-evenly;
+    background-image: linear-gradient(grey, white);
+    padding: 0 1em 0 1em;
+    margin: -9px;
+}
+
+.card {
+    border: 1px solid black;
+
 }
