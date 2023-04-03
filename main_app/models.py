@@ -13,6 +13,9 @@ class Weakness(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+    
+    def get_absolute_url(self):
+        return reverse('weaknesses_detail', kwargs={'pk': self.id})
 
 class Resistance(models.Model):
     name: models.CharField(max_length=10)
@@ -24,6 +27,8 @@ class Game(models.Model):
     title = models.CharField(max_length=30)
     description = models.CharField(max_length=250)
     boss_number = models.IntegerField()
+    weaknesses = models.ManyToManyField(Weakness)
+
 
     def __str__(self):
         return f"{self.title}, Boss Number: {self.boss_number}"
@@ -34,14 +39,6 @@ class Game(models.Model):
 class Boss(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=250)
-    image = models.CharField(max_length=100)
-    weaknesses = models.ManyToManyField(Weakness)
-    resistances = models.ManyToManyField(Resistance)
-    ishard = models.CharField(
-        max_length=1,
-        choices=ISHARD,
-        default=ISHARD[0][0],
-    )
     game = models.ForeignKey(
         Game,
         on_delete=models.CASCADE

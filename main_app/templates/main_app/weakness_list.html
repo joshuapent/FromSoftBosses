@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Weakness List</h1>
+
+{% for weakness in weaknesses_list %}
+  <a href="{% url 'weaknesses_detail' weakness.id %}">
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ weakness.name }}</span>
+        </div>
+    </div>
+  </a>
+{% endfor %}
+
+{% endblock %}

@@ -75,7 +75,7 @@ def games_index(request):
 def games_show(request, game_id):
     game = Game.objects.get(id=game_id)
     bosses = Boss.objects.all()
-    id_list = Game.weaknesses.all().values_list('id')
+    id_list = game.weaknesses.all().values_list('id')
     weaknesses_game_doesnt_have = Game.objects.exclude(id__in=id_list)
     boss_form = BossForm()
 
