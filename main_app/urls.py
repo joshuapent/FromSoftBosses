@@ -10,4 +10,9 @@ urlpatterns = [
     path('games/<int:pk>/remove/', views.GameDelete.as_view(), name='remove_game'),
     path('games/<int:pk>/edit/', views.GameUpdate.as_view(), name='edit_game'),
     path('games/<int:game_id>/add_boss/', views.add_boss, name='add_boss'),
+    path('weaknesses/', views.WeaknessList.as_view(), name='weakness_index'),
+    path('weaknesses/<int:pk>/', views.WeaknessDetail.as_view(), name='weakness_detail'),
+    path('weaknesses/create/', views.WeaknessCreate.as_view(), name='weakness_create'),
+    path('weaknesses/<int:pk>/update/', views.WeaknessUpdate.as_view(), name='weakness_update'),
+    path('weaknesses/<int:pk>/delete/', views.WeaknessDelete.as_view(), name='weakness_delete'),
 ]
