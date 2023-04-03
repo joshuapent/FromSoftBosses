@@ -27,6 +27,9 @@ class Game(models.Model):
 
     def __str__(self):
         return f"{self.title}, Boss Number: {self.boss_number}"
+    
+    def get_absolute_url(self):
+        return reverse('show', kwargs={'game_id': self.id})
 
 class Boss(models.Model):
     name = models.CharField(max_length=100)
