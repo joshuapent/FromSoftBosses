@@ -9,13 +9,13 @@ ISHARD = (
 )
 
 class Weakness(models.Model):
-    name: models.CharField(max_length=10)
+    name = models.CharField(max_length=10)
 
     def __str__(self):
         return f"{self.name}"
     
     def get_absolute_url(self):
-        return reverse('weaknesses_detail', kwargs={'pk': self.id})
+        return reverse('weakness_detail', kwargs={'pk': self.id})
 
 class Resistance(models.Model):
     name: models.CharField(max_length=10)
@@ -27,7 +27,7 @@ class Game(models.Model):
     title = models.CharField(max_length=30)
     description = models.CharField(max_length=250)
     boss_number = models.IntegerField()
-    weaknesses = models.ManyToManyField(Weakness)
+    weakness = models.ManyToManyField(Weakness)
 
 
     def __str__(self):

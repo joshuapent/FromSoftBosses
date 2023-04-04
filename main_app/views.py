@@ -41,14 +41,14 @@ class WeaknessUpdate(UpdateView):
 
 class WeaknessDelete(DeleteView):
   model = Weakness
-  success_url = '/weaknesses'
+  success_url = '/weakness'
 
 def assign_weakness(request, game_id, weakness_id):
-    Game.objects.get(id=game_id).weaknesses.add(weakness_id)
+    Game.objects.get(id=game_id).weakness.add(weakness_id)
     return redirect('show', game_id=game_id)
 
 def unassign_weakness(request, game_id, weakness_id):
-    Game.objects.get(id=game_id).weaknesses.remove(weakness_id)
+    Game.objects.get(id=game_id).weakness.remove(weakness_id)
     return redirect('show', game_id=game_id)
 
 def add_boss(request, game_id):
@@ -75,15 +75,15 @@ def games_index(request):
 def games_show(request, game_id):
     game = Game.objects.get(id=game_id)
     bosses = Boss.objects.all()
-    id_list = game.weaknesses.all().values_list('id')
-    weaknesses_game_doesnt_have = Game.objects.exclude(id__in=id_list)
+    id_list = game.weakness.all().values_list('id')
+    weakness_game_doesnt_have = Game.objects.exclude(id__in=id_list)
     boss_form = BossForm()
 
     return render(request, 'games/show.html', {
         'game' : game,
         'boss_form': boss_form,
         'bosses': bosses,
-        'weaknesses': weaknesses_game_doesnt_have
+        'weakness': weakness_game_doesnt_have
     })
 
 
