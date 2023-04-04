@@ -76,7 +76,7 @@ def games_show(request, game_id):
     game = Game.objects.get(id=game_id)
     bosses = Boss.objects.all()
     id_list = game.weakness.all().values_list('id')
-    weakness_game_doesnt_have = Game.objects.exclude(id__in=id_list)
+    weakness_game_doesnt_have = Weakness.objects.exclude(id__in=id_list)
     boss_form = BossForm()
 
     return render(request, 'games/show.html', {

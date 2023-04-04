@@ -17,7 +17,8 @@ class Weakness(models.Model):
     def get_absolute_url(self):
         return reverse('weakness_detail', kwargs={'pk': self.id})
 
-class Resistance(models.Model):
+
+class Strengths(models.Model):
     name: models.CharField(max_length=10)
 
     def __str__(self):

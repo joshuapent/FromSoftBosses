@@ -42,7 +42,29 @@
 <hr>
 <div class="row">
   <div class="col s6">
-    <h3>Resistances</h3>
+    <h3>Weaknesses</h3>
+    {% if game.weakness.count %}
+      {% for weakness in game.weakness.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              {{weakness.name}}
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'unassign_weakness' game.id weakness.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn">Remove</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>No Weaknesses</h5>
+    {% endif %}
+  </div>
+  <div class="col s6">
+    <h3>Strengths</h3>
     {% if weakness.count %}
       {% for weakness in weakness.all %}
         <div class="card">
